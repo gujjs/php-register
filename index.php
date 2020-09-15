@@ -23,11 +23,13 @@ $data = json_decode($json, true);
     <h4>Registered users:</h4>
 
     <div>
+      <ul>
       <?php
         foreach ($data as $key => $value) {
-          echo $key."<br>";
+          echo '<li>'.$key." -- ".$value['name']."</li>";
         }
       ?>
+      </ul>
     </div>
 
   </section>

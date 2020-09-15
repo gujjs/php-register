@@ -1,27 +1,26 @@
 <?php
 if($_POST){
 	$username = $_POST["username"];
+	$fullName = $_POST["full_name"];
 
 	$encodedPassword = password_hash($_POST["pass"], PASSWORD_DEFAULT);
-	$newUser = array('name' => $_POST["full_name"], 'password' => $encodedPassword);
+	$newUser = array('name' => $fullName, 'password' => $encodedPassword);
 
 	$json = file_get_contents('users.json');
 	$data = json_decode($json, true);
-	$errorClass = 'none';
 
 	foreach($data as $key => $value){
     if ($key == $username){
 			$usernameExists = "User with this name already exists.";
-			$errorClass = '"invalid"';
+			$errorClass = "invalid";
 		}
   }
 
-	if ($errorClass == 'none'){
+	if ($errorClass != 'invalid'){
 		$data[$username] = $newUser;
 		file_put_contents( 'users.json', json_encode($data));
 		echo "succesufulo registertion";
 		header("location: index.php");
-		#kill();
 	}
 }
 ?>
@@ -40,11 +39,11 @@ if($_POST){
   <form action="register.php" method="post">
 
     <label for="full_name">Full name:</label>
-    <input type="text" id="full_name" name="full_name"><br>
+    <input type="text" id="full_name" name="full_name" value="<?php echo $fullName; ?>"><br>
 
-		<div class=<?php echo $errorClass; ?>>
+		<div class='<?php echo $errorClass; ?>'>
 	    <label for="username">Username:</label>
-	    <input type="text" id="username" name="username">
+	    <input type="text" id="username" name="username" value="<?php echo $username; ?>">
 	    <label for="username"><?php echo $usernameExists;?></label><br>
 		</div>
 
