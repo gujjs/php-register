@@ -41,11 +41,11 @@ if($_POST){
     <label for="full_name">Full name:</label>
     <input type="text" id="full_name" name="full_name" value="<?php echo $fullName; ?>"><br>
 
-		<div class='<?php echo $errorClass; ?>'>
+	<div class='<?php echo $errorClass; ?>'>
 	    <label for="username">Username:</label>
 	    <input type="text" id="username" name="username" value="<?php echo $username; ?>">
 	    <label for="username"><?php echo $usernameExists;?></label><br>
-		</div>
+	</div>
 
     <label for="pass">Password:</label>
     <input type="password" id="pass" name="pass"><br>

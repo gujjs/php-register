@@ -16,6 +16,7 @@ $data = json_decode($json, true);
   </header>
 
   <section>
+    <a href="login.php">Log in</a><br>
     <a href="register.php">Sign up</a>
   </section>
 
